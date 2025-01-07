@@ -3,6 +3,7 @@ import { Home } from './home/Home';
 import { Header } from './components/Header';
 import { Detail } from './detail/Detail';
 import { Route, Routes } from "react-router-dom"
+import { Contact } from "./contact/Contact";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         {/* 【 Route 】ルーティングで表示したいコンポーネントとそのパスを設定するコンポーネント。 */}
         <Route path="/" element={<Home />}></Route>
         <Route path="posts/:id" element={<Detail />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
       </Routes>
 
     </>
