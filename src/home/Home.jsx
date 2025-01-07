@@ -1,8 +1,22 @@
 import React from "react";
-import { posts } from "../data/posts"
+// import { posts } from "../data/posts"//APIリクエストにより、使わなくなった
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
+  const [posts, setPosts] = useState([])
+
+  // APIでpostsを取得する処理をuseEffectで実行
+  useEffect(() => {
+    const fetcher = async () => {
+      const res = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts")//API　リクエストを送信
+      const data = await res.json();//レスポンスを JSON としてパース
+      setPosts(data.posts); // 取得した投稿データをstateに設定
+    }
+
+    fetcher()//非同期関数を定義して実行
+  }, [])
+
 
   return (
     <ul className="max-w-3xl mx-auto">
